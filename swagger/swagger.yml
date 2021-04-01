@@ -1,0 +1,327 @@
+swagger: "2.0"
+info:
+  title: beego Test API
+  description: beego has a very cool tools to autogenerate documents for your API
+  version: 1.0.0
+  termsOfService: http://beego.me/
+  contact:
+    email: astaxie@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /v1
+paths:
+  /blog/:
+    get:
+      tags:
+      - blog
+      description: get all Blogs
+      operationId: BlogController.GetAll
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Blog'
+    post:
+      tags:
+      - blog
+      description: create blogs
+      operationId: BlogController.CreateBlog
+      parameters:
+      - in: body
+        name: body
+        description: body for blog content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Blog'
+      responses:
+        "200":
+          description: '{int} models.Blog.Id'
+        "403":
+          description: body is empty
+  /blog/{id}:
+    get:
+      tags:
+      - blog
+      description: get blog by id
+      operationId: BlogController.Get
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Blog'
+        "403":
+          description: :id is empty
+  /iPUser/:
+    get:
+      tags:
+      - iPUser
+      description: get all Users
+      operationId: UserController.GetAll
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.User'
+    post:
+      tags:
+      - iPUser
+      description: create users
+      operationId: UserController.CreateUser
+      parameters:
+      - in: body
+        name: body
+        description: body for user content
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      responses:
+        "200":
+          description: '{int} models.User.Id'
+        "403":
+          description: body is empty
+  /iPUser/{uid}:
+    get:
+      tags:
+      - iPUser
+      description: get user by uid
+      operationId: UserController.Get
+      parameters:
+      - in: path
+        name: uid
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.User'
+        "403":
+          description: :uid is empty
+    put:
+      tags:
+      - iPUser
+      description: update the user
+      operationId: UserController.Update
+      parameters:
+      - in: path
+        name: uid
+        description: The uid you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for user content
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.User'
+        "403":
+          description: :uid is not int
+    delete:
+      tags:
+      - iPUser
+      description: delete the user
+      operationId: UserController.Delete
+      parameters:
+      - in: path
+        name: uid
+        description: The uid you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: uid is empty
+  /iPUser/login:
+    get:
+      tags:
+      - iPUser
+      description: Logs user into the system
+      operationId: UserController.Login
+      parameters:
+      - in: query
+        name: username
+        description: The username for login
+        required: true
+        type: string
+      - in: query
+        name: password
+        description: The password for login
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} login success'
+        "403":
+          description: user not exist
+  /user/:
+    get:
+      tags:
+      - iPUser
+      description: get all Users
+      operationId: UserController.GetAll
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.User'
+    post:
+      tags:
+      - iPUser
+      description: create users
+      operationId: UserController.CreateUser
+      parameters:
+      - in: body
+        name: body
+        description: body for user content
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      responses:
+        "200":
+          description: '{int} models.User.Id'
+        "403":
+          description: body is empty
+  /user/{uid}:
+    get:
+      tags:
+      - iPUser
+      description: get user by uid
+      operationId: UserController.Get
+      parameters:
+      - in: path
+        name: uid
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.User'
+        "403":
+          description: :uid is empty
+    put:
+      tags:
+      - iPUser
+      description: update the user
+      operationId: UserController.Update
+      parameters:
+      - in: path
+        name: uid
+        description: The uid you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for user content
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.User'
+        "403":
+          description: :uid is not int
+    delete:
+      tags:
+      - iPUser
+      description: delete the user
+      operationId: UserController.Delete
+      parameters:
+      - in: path
+        name: uid
+        description: The uid you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: uid is empty
+  /user/login:
+    get:
+      tags:
+      - iPUser
+      description: Logs user into the system
+      operationId: UserController.Login
+      parameters:
+      - in: query
+        name: username
+        description: The username for login
+        required: true
+        type: string
+      - in: query
+        name: password
+        description: The password for login
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} login success'
+        "403":
+          description: user not exist
+definitions:
+  models.Blog:
+    title: Blog
+    type: object
+    properties:
+      CreateTime:
+        type: string
+        format: datetime
+      Title:
+        type: string
+      User:
+        $ref: '#/definitions/models.User'
+      admireCount:
+        type: integer
+        format: int64
+      id:
+        type: integer
+        format: int64
+      viewCount:
+        type: integer
+        format: int64
+  models.User:
+    title: User
+    type: object
+    properties:
+      Email:
+        type: string
+      Password:
+        type: string
+      Role:
+        type: string
+      Username:
+        type: string
+      assessCount:
+        type: integer
+        format: int64
+      id:
+        type: integer
+        format: int64
+tags:
+- name: blog
+  description: |
+    Operations about Blog
+- name: user
+  description: |
+    Operations about Users
+- name: iPUser
+  description: |
+    Operations about Users
